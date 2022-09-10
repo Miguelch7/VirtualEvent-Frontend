@@ -20,10 +20,25 @@
   src: local('Proxima Nova'), url(../public/fonts/proximanova-regular-webfont.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Proxima Nova Alt';
+  src: local('Proxima Nova Alt'), url(../public/fonts/proxima_nova_alt_light-webfont.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Alt';
+  font-weight: 700;
+  src: local('Proxima Nova Alt'), url(../public/fonts/proxima_nova_alt_bold-webfont.woff) format('woff');
+}
+
 .SharpSansFont {
-  font-family: 'Sharp Sans';
+  font-family: 'Sharp Sans', 'Lucida Sans', sans-serif;
 }
 
 .ProximaNovaFont {
-  font-family: 'Proxima Nova';
+  font-family: 'Proxima Nova', sans-serif;
+}
+
+.ProximaNovaAltFont {
+  font-family: 'Proxima Nova Alt', 'Proxima Nova', sans-serif;
 }

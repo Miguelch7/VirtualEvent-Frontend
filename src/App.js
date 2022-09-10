@@ -8,7 +8,7 @@ function App() {
     <>
       <Hero />
 
-      <section className="ProximaNovaFont flex flex-wrap justify-between items-center text-sm w-4/5 m-auto py-10 lg:flex-nowrap">
+      <section className="ProximaNovaFont flex flex-wrap justify-between items-center text-base w-4/5 m-auto py-10 lg:flex-nowrap">
         <Main />
       </section>
     </>

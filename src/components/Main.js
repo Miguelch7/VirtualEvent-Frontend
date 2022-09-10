@@ -1,5 +1,6 @@
 import React from 'react';
 import PartnersList from './PartnersList';
+import SpecialistsList from './SpecialistsList';
 
 const Main = () => {
   return (
@@ -12,7 +13,7 @@ const Main = () => {
 
       <p className="my-2">Escucha de primera mano la voz de nuestros especialistas:</p>
 
-      {/* // TODO: <Specialists /> */}
+      <SpecialistsList />
 
       <p className="my-2">Participa e inspirate para innovar y mejorar la interacción entre clientes y marcas con historias de éxito de empresas del ámbito financiero en América Latina.</p>
 
