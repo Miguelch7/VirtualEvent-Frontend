@@ -1,9 +1,10 @@
 import React from 'react';
+import PartnersList from './PartnersList';
 
 const Main = () => {
   return (
     <main className="text-justify text-gray-600 lg:w-1/2 lg:mr-10">
-      {/* // TODO: <Partners /> */}
+      <PartnersList />
 
       <p className="my-2">Te invitan a este webinar, donde trataremos la temática de cómo humanizar la experiencia del cliente de Banca y Seguros en el nuevo entorno digital.</p>
 
@@ -17,7 +18,7 @@ const Main = () => {
 
       <p className="my-2">¡Te esperamos!</p>
 
-      {/* // TODO: <Partners /> */}
+      <PartnersList />
     </main>
   );
 }
