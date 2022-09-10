@@ -1,4 +1,5 @@
 import React from 'react';
+import Partner from './Partner';
 
 const partners = [
   {
@@ -30,10 +31,11 @@ const partners = [
 const PartnersList = () => {
   return (
     <div className="w-full flex justify-between my-5">
-        { partners && partners.map(({ name, image }, index) => (
-          <figure className="flex justify-center items-center mx-2 w-1/6">
-            <img className="w-full" src={`img/partners/${ image }`} alt={ name } />
-          </figure>
+        { partners && partners.map((partner, index) => (
+          <Partner
+            key={ index }
+            partner={ partner }
+          />
         ))}
       </div>
   );
