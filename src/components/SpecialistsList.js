@@ -1,4 +1,5 @@
 import React from 'react';
+import Specialist from './Specialist';
 
 const specialists = [
   {
@@ -26,16 +27,11 @@ const specialists = [
 const SpecialistsList = () => {
   return (
     <div className="ProximaNovaAltFont flex flex-col justify-between my-2">
-      { specialists && specialists.map(({ name, image, job }, index) => (
-        <article key={ index } className="flex items-center my-3">
-          <figure className="h-12 md:h-16">
-            <img className="h-full" src={`img/specialists/${ image }`} alt={ name } />
-          </figure>
-          <div className="mx-5 text-teal-900 text-start">
-            <h5 className="font-bold">{ name }</h5>
-            <p className="">{ job }</p>
-          </div>
-        </article>
+      { specialists && specialists.map(specialist => (
+        <Specialist 
+          key={ specialist.id }
+          specialist={ specialist }
+        />
       ))}
     </div>
   );
