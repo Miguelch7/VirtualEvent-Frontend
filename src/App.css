@@ -1,38 +1,20 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Sharp Sans';
+  src: local('Sharp Sans'), url(../public/fonts/SharpSansNo1Medium-Regular.woff) format('woff');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'Sharp Sans';
+  font-weight: 600;
+  src: local('Sharp Sans'), url(../public/fonts/shsn-webfont.woff) format('woff');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: 'Sharp Sans';
+  font-weight: 700;
+  src: local('Sharp Sans'), url(../public/fonts/SharpSansNo1-Bold.woff) format('woff');
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.SharpSansFont {
+  font-family: 'Sharp Sans';
 }
