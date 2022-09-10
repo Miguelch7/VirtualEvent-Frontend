@@ -27,9 +27,9 @@ const specialists = [
 const SpecialistsList = () => {
   return (
     <div className="ProximaNovaAltFont flex flex-col justify-between my-2">
-      { specialists && specialists.map(specialist => (
+      { specialists && specialists.map((specialist, index) => (
         <Specialist 
-          key={ specialist.id }
+          key={ index }
           specialist={ specialist }
         />
       ))}
