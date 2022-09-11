@@ -3,6 +3,7 @@ import './App.css';
 import Hero from './components/Hero';
 import Main from './components/Main';
 import Form from './components/Form';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Form />
         </aside>
       </section>
+
+      <Footer />
     </>
   );
 }
