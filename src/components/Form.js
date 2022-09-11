@@ -1,10 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+const initialForm = {
+  name: '',
+  surname: '',
+  email: '',
+  country: 'Argentina',
+  phone: '',
+  job: '',
+};
 
 const Form = () => {
+
+  const [form, setForm] = useState(initialForm);
+
+  const { name, surname, email, country, phone, job } = form;
+
+  const handleInputChange = e => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const resetForm = () => {
+    setForm(initialForm);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    // TODO: Validate Form
+
+    // TODO: Send Form
+
+    resetForm();
+  }
 
   return (
     <form
       className="ProximaNovaAltFont text-teal-900"
+      onSubmit={ handleSubmit }
     >
         <legend className="font-bold text-center text-lg">
           ¡Inscríbete y reserva tu lugar ahora!
@@ -21,6 +56,8 @@ const Form = () => {
             type="text" 
             name="name" 
             id="name" 
+            value={ name }
+            onChange={ handleInputChange }
           />
         </fieldset>
 
@@ -35,6 +72,8 @@ const Form = () => {
             type="text" 
             name="surname" 
             id="surname"
+            value={ surname }
+            onChange={ handleInputChange }
           />
         </fieldset>
 
@@ -49,6 +88,8 @@ const Form = () => {
             type="email"
             name="email"
             id="email"
+            value={ email }
+            onChange={ handleInputChange }
           />
         </fieldset>
 
@@ -62,6 +103,8 @@ const Form = () => {
             className="py-1 px-2 w-full" 
             name="country" 
             id="country" 
+            value={ country }
+            onChange={ handleInputChange }
           >
             <option value="Argentina">Argentina</option>
             <option value="Otro">Otro</option>
@@ -79,6 +122,8 @@ const Form = () => {
             type="tel"
             name="phone"
             id="phone"
+            value={ phone }
+            onChange={ handleInputChange }
           />
         </fieldset>
 
@@ -93,6 +138,8 @@ const Form = () => {
             type="text"
             name="job"
             id="job"
+            value={ job }
+            onChange={ handleInputChange }
           />
         </fieldset>
 
