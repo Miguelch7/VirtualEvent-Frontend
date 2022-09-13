@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Sharp Sans';
+  src: local('Sharp Sans'), url(../public/fonts/SharpSansNo1Medium-Regular.woff) format('woff');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'Sharp Sans';
+  font-weight: 600;
+  src: local('Sharp Sans'), url(../public/fonts/shsn-webfont.woff) format('woff');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: 'Sharp Sans';
+  font-weight: 700;
+  src: local('Sharp Sans'), url(../public/fonts/SharpSansNo1-Bold.woff) format('woff');
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova'), url(../public/fonts/proximanova-regular-webfont.woff) format('woff');
 }
 
-.App-link {
-  color: #61dafb;
+@font-face {
+  font-family: 'Proxima Nova Alt';
+  src: local('Proxima Nova Alt'), url(../public/fonts/proxima_nova_alt_light-webfont.woff) format('woff');
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: 'Proxima Nova Alt';
+  font-weight: 700;
+  src: local('Proxima Nova Alt'), url(../public/fonts/proxima_nova_alt_bold-webfont.woff) format('woff');
+}
+
+.SharpSansFont {
+  font-family: 'Sharp Sans', 'Lucida Sans', sans-serif;
+}
+
+.ProximaNovaFont {
+  font-family: 'Proxima Nova', sans-serif;
+}
+
+.ProximaNovaAltFont {
+  font-family: 'Proxima Nova Alt', 'Proxima Nova', sans-serif;
 }
