@@ -7,7 +7,7 @@ export const validateForm = form => {
 
   if (!form.surname.trim()) errors.surname = 'El Apellido es obligatorio';
 
-  if (!regexEmail.test(form.email)) errors.email = 'El Email debe ser válido: \"example@example.com\"';
+  if (!regexEmail.test(form.email)) errors.email = 'El Email debe ser válido: "example@example.com"';
 
   if (!form.country.trim()) errors.country = 'El País es obligatorio';
 
