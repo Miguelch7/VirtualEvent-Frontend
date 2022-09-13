@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import axiosClient from '../config/axios';
 import { validateForm } from '../helpers/validateForm';
 import ErrorMessage from './ErrorMessage';
@@ -7,7 +8,7 @@ const initialForm = {
   name: '',
   surname: '',
   email: '',
-  country: 'Argentina',
+  country: '',
   phone: '',
   job: '',
 };
@@ -41,14 +42,32 @@ const Form = () => {
     setForm(initialForm);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    setErrors(validateForm(form));
+    const formValidations = validateForm(form);
 
-    if (Object.keys(errors).length) return;
+    setErrors(formValidations);
 
-    // TODO: Send Form
+    if(Object.keys(formValidations).length > 0) return;
+
+    try {
+      await axiosClient.post('/api/attendees', form);
+
+      Swal.fire({
+        title: '¡Te inscribiste éxitosamente!',
+        text: 'Gracias por inscribirte, revisa tu casilla de email para ver la invitación.',
+        icon: 'success',
+        confirmButtonColor: '#134e4a'
+      });
+    } catch (error) {
+      Swal.fire({
+        title: '¡Error!',
+        text: 'Ha ocurrido un error en la inscripción, vuelve a intentarlo.',
+        icon: 'error',
+        confirmButtonColor: '#134e4a'
+      });
+    }
 
     resetForm();
   }
@@ -126,13 +145,15 @@ const Form = () => {
           value={ country }
           onChange={ handleInputChange }
         >
+          <option value="" className="italic text-gray-500" disabled>-- Seleccione su país --</option>
           { countries && countries.map(country => (
             <option
-              key={ country._id }
-              value={ country._id }
+            key={ country._id }
+            value={ country._id }
             >{ country.name }</option>
-          ))}
+            ))}
         </select>
+        { errors.country && <ErrorMessage message={ errors.country } />}
       </fieldset>
 
       <fieldset className="my-5">
