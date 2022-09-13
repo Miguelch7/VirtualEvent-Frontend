@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { validateForm } from '../helpers/validateForm';
+import ErrorMessage from './ErrorMessage';
 
 const initialForm = {
   name: '',
@@ -12,6 +14,7 @@ const initialForm = {
 const Form = () => {
 
   const [form, setForm] = useState(initialForm);
+  const [errors, setErrors] = useState({});
 
   const { name, surname, email, country, phone, job } = form;
 
@@ -29,7 +32,9 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // TODO: Validate Form
+    setErrors(validateForm(form));
+
+    if (Object.keys(errors).length) return;
 
     // TODO: Send Form
 
@@ -59,6 +64,7 @@ const Form = () => {
             value={ name }
             onChange={ handleInputChange }
           />
+          { errors.name && <ErrorMessage message={ errors.name } />}
         </fieldset>
 
         <fieldset className="my-5">
@@ -75,6 +81,7 @@ const Form = () => {
             value={ surname }
             onChange={ handleInputChange }
           />
+          { errors.surname && <ErrorMessage message={ errors.surname } />}
         </fieldset>
 
         <fieldset className="my-5">
@@ -90,7 +97,8 @@ const Form = () => {
             id="email"
             value={ email }
             onChange={ handleInputChange }
-          />
+            />
+          { errors.email && <ErrorMessage message={ errors.email } />}
         </fieldset>
 
         <fieldset className="my-5">
@@ -125,6 +133,7 @@ const Form = () => {
             value={ phone }
             onChange={ handleInputChange }
           />
+          { errors.phone && <ErrorMessage message={ errors.phone } />}
         </fieldset>
 
         <fieldset className="my-5">
@@ -141,6 +150,7 @@ const Form = () => {
             value={ job }
             onChange={ handleInputChange }
           />
+          { errors.job && <ErrorMessage message={ errors.job } />}
         </fieldset>
 
         <input 
