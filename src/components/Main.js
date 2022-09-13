@@ -4,7 +4,7 @@ import SpecialistsList from './SpecialistsList';
 
 const Main = () => {
   return (
-    <main className="text-justify text-gray-600 lg:w-1/2 lg:mr-10">
+    <main className="text-justify text-gray-600 lg:w-1/2 lg:mr-10 animate__animated animate__bounceInLeft animate__slow">
       <PartnersList />
 
       <p className="my-2">Te invitan a este webinar, donde trataremos la temática de cómo humanizar la experiencia del cliente de Banca y Seguros en el nuevo entorno digital.</p>

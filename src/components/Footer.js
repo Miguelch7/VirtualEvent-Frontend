@@ -30,7 +30,7 @@ const socialNetworks = [
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-100 pb-10 lg:pb-20">
+    <footer className="w-full bg-gray-100 pb-10 lg:pb-20 animate__animated animate__fadeInUp">
       <div className="flex justify-between items-center w-4/5 m-auto py-8 border-b-2 border-b-gray-300 lg:py-10">
         <p className="text-gray-600 mx-1">&copy; { new Date().getFullYear() }</p>
         <div className="flex justify-between items-center w-2/3 lg:w-1/3">
