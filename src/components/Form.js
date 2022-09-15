@@ -205,9 +205,10 @@ const Form = () => {
       </fieldset>
 
       <input 
-        className="my-5 py-2 px-3 bg-teal-900 text-white font-bold w-full hover:cursor-pointer hover:bg-teal-700 transition-all"
+        className="my-5 py-2 px-3 bg-teal-900 text-white font-bold w-full hover:cursor-pointer hover:bg-teal-700 transition-all disabled:bg-gray-500"
         type="submit" 
         value="Inscríbete" 
+        disabled={ countries.length === 0 }
       />
     </form>
   );
