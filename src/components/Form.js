@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import axiosClient from '../config/axios';
-import { validateForm } from '../helpers/validateForm';
+import { validateInput } from '../helpers/validateForm';
 import ErrorMessage from './ErrorMessage';
 
 const initialForm = {
@@ -17,7 +17,8 @@ const Form = () => {
 
   const [countries, setCountries] = useState([]);
   const [form, setForm] = useState(initialForm);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState(initialForm);
+  const [isValidForm, setIsValidForm] = useState(false);
 
   useEffect(() => {
     const getCountries = async () => {
@@ -28,6 +29,10 @@ const Form = () => {
 
     getCountries();
   }, []);
+
+  useEffect(() => {
+    setIsValidForm(!Object.keys(errors).some(key => errors[key] !== null));
+  }, [errors]);
 
   const { name, surname, email, country, phone, job } = form;
 
@@ -42,19 +47,20 @@ const Form = () => {
     setForm(initialForm);
   };
 
+  const handleBlur = e => {    
+    const inputValidation = validateInput(e.target.name, e.target.value);
+
+    setErrors({
+      ...errors,
+      [inputValidation.input]: inputValidation.message
+    });
+  }
+
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const formValidations = validateForm(form);
-
-    setErrors(formValidations);
-
-    if(Object.keys(formValidations).length > 0) return;
-
     try {
-      const response = await axiosClient.post('/api/attendees', form);
-
-      console.log(response);
+      await axiosClient.post('/api/attendees', form);
 
       Swal.fire({
         title: '¡Te inscribiste éxitosamente!',
@@ -108,6 +114,7 @@ const Form = () => {
           id="name" 
           value={ name }
           onChange={ handleInputChange }
+          onBlur={ handleBlur }
         />
         { errors.name && <ErrorMessage message={ errors.name } />}
       </fieldset>
@@ -125,6 +132,7 @@ const Form = () => {
           id="surname"
           value={ surname }
           onChange={ handleInputChange }
+          onBlur={ handleBlur }
         />
         { errors.surname && <ErrorMessage message={ errors.surname } />}
       </fieldset>
@@ -136,12 +144,13 @@ const Form = () => {
         >Correo electrónico del trabajo</label>
 
         <input 
-          className="py-1 px-2 w-full" 
+          className="py-1 px-2 w-full"
           type="email"
           name="email"
           id="email"
           value={ email }
           onChange={ handleInputChange }
+          onBlur={ handleBlur }
           />
         { errors.email && <ErrorMessage message={ errors.email } />}
       </fieldset>
@@ -158,6 +167,7 @@ const Form = () => {
           id="country" 
           value={ country }
           onChange={ handleInputChange }
+          onBlur={ handleBlur }
         >
           <option value="" className="italic text-gray-500" disabled>-- Seleccione su país --</option>
           { countries && countries.map(country => (
@@ -183,6 +193,7 @@ const Form = () => {
           id="phone"
           value={ phone }
           onChange={ handleInputChange }
+          onBlur={ handleBlur }
         />
         { errors.phone && <ErrorMessage message={ errors.phone } />}
       </fieldset>
@@ -200,6 +211,7 @@ const Form = () => {
           id="job"
           value={ job }
           onChange={ handleInputChange }
+          onBlur={ handleBlur }
         />
         { errors.job && <ErrorMessage message={ errors.job } />}
       </fieldset>
@@ -208,7 +220,7 @@ const Form = () => {
         className="my-5 py-2 px-3 bg-teal-900 text-white font-bold w-full hover:cursor-pointer hover:bg-teal-700 transition-all disabled:bg-gray-500"
         type="submit" 
         value="Inscríbete" 
-        disabled={ countries.length === 0 }
+        disabled={ !isValidForm }
       />
     </form>
   );
