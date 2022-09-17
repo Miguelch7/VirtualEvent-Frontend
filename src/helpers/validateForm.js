@@ -1,19 +1,31 @@
-export const validateForm = form => {
-  let errors = {};
+const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+const regexPhone = /^[+]?[0-9]{10,13}$/;
 
-  let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+const validationsMessages = {
+  name: 'El Nombre es obligatorio',
+  surname: 'El Apellido es obligatorio',
+  email: 'El Email debe ser válido: "example@example.com"',
+  country: 'El País es obligatorio',
+  phone: 'El Número de Telefono debe tener entre 10 y 13 números',
+  job: 'El campo Puesto de Trabajo es obligatorio',
+}
 
-  if (!form.name.trim()) errors.name = 'El Nombre es obligatorio';
+const validations = {
+  name: value => !value?.trim(),
+  surname: value => !value?.trim(),
+  email: value => !regexEmail.test(value),
+  country: value => !value?.trim(),
+  phone: value => !regexPhone.test(value),
+  job: value => !value?.trim()
+}
 
-  if (!form.surname.trim()) errors.surname = 'El Apellido es obligatorio';
+export const validateInput = (input, value) => {
+  const hasError = validations[input](value);
 
-  if (!regexEmail.test(form.email)) errors.email = 'El Email debe ser válido: "example@example.com"';
+  let message = hasError ? validationsMessages[input] : null;
 
-  if (!form.country.trim()) errors.country = 'El País es obligatorio';
-
-  if (!form.phone.trim()) errors.phone = 'El Número de Telefono debe contener al menos 10 números';
-
-  if (!form.job.trim()) errors.job = 'El campo Puesto de Trabajo es obligatorio';
-
-  return errors;
+  return { 
+    input, 
+    message
+  };
 }
