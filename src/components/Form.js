@@ -108,7 +108,7 @@ const Form = () => {
         >Nombre</label>
 
         <input 
-          className="py-1 px-2 w-full" 
+          className={"py-1 px-2 w-full" + (errors.name ? ' border border-red-500' : '')} 
           type="text" 
           name="name" 
           id="name" 
@@ -126,7 +126,7 @@ const Form = () => {
         >Apellido</label>
 
         <input 
-          className="py-1 px-2 w-full" 
+          className={"py-1 px-2 w-full" + (errors.surname ? ' border border-red-500' : '')} 
           type="text" 
           name="surname" 
           id="surname"
@@ -144,7 +144,7 @@ const Form = () => {
         >Correo electrónico del trabajo</label>
 
         <input 
-          className="py-1 px-2 w-full"
+          className={"py-1 px-2 w-full" + (errors.email ? ' border border-red-500' : '')}
           type="email"
           name="email"
           id="email"
@@ -162,7 +162,7 @@ const Form = () => {
         >País</label>
 
         <select 
-          className="py-1 px-2 w-full" 
+          className={"py-1 px-2 w-full" + (errors.country ? ' border border-red-500' : '')} 
           name="country" 
           id="country" 
           value={ country }
@@ -187,7 +187,7 @@ const Form = () => {
         >Número de teléfono</label>
 
         <input 
-          className="py-1 px-2 w-full" 
+          className={"py-1 px-2 w-full" + (errors.phone ? ' border border-red-500' : '')} 
           type="tel"
           name="phone"
           id="phone"
@@ -205,7 +205,7 @@ const Form = () => {
         >Puesto de trabajo</label>
 
         <input 
-          className="py-1 px-2 w-full" 
+          className={"py-1 px-2 w-full" + (errors.job ? ' border border-red-500' : '')} 
           type="text"
           name="job"
           id="job"
