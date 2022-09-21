@@ -2,6 +2,10 @@
 
 Deploy: https://virtual-event-frontend.vercel.app/
 
+You need to setup your configuration in the '.env.development.local' file with the following config:
+> #### Backend config
+> REACT_APP_BACKEND_URL=[ BACKEND URL ]
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
